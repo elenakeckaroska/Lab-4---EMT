@@ -13,13 +13,14 @@ import java.time.Duration;
 @Entity
 @Table(name = "appointments")
 @Getter
+@SecondaryTable(name = "appointmentCategory", pkJoinColumns = @PrimaryKeyJoinColumn(name = "appointments_id"))
 public class Appointment extends AbstractEntity<AppointmentId> {
 
     private Duration appointment_duration;
 
     private TimePlaceOfAppointment timePlaceOfAppointment;
 
-    @ManyToOne
+//    @OneToOne
     private AppointmentCategory appointmentCategory;
 
     private Doctor doctor;

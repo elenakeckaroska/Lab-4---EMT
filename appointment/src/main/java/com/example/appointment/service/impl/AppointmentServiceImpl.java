@@ -40,10 +40,10 @@ public class AppointmentServiceImpl implements AppointmentService {
                                     Patient patient, Duration duration, TimePlaceOfAppointment timePlaceOfAppointment,
                                     AppointmentCategory appointmentCategory) {
 
-//        com.example.appointment.domain.model.AppointmentCategory appointmentCategory1 = new com.example.appointment.domain.model.AppointmentCategory(
-//                appointmentCategory.getPrice(),  appointmentCategory.getAppointmentType());
+        com.example.appointment.domain.model.AppointmentCategory appointmentCategory1 = new com.example.appointment.domain.model.AppointmentCategory(
+                appointmentCategory.getPrice(),  appointmentCategory.getAppointmentType());
 
-        com.example.appointment.domain.model.AppointmentCategory appointmentCategory1 = null;
+//        com.example.appointment.domain.model.AppointmentCategory appointmentCategory1 = null;
         com.example.appointment.domain.valueObjects.Doctor doctor1 = new com.example.appointment.domain.valueObjects.Doctor(new DoctorId(doctor.getId().getId()),
                 doctor.getPersonalData(), doctor.getWorkExperience());
         com.example.appointment.domain.valueObjects.Patient patient1 = new com.example.appointment.domain.valueObjects.Patient(new PatientId(patient.getId().getId()), patient.getPersonalData());
