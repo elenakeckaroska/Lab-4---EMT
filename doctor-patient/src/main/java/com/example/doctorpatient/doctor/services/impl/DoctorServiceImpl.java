@@ -68,6 +68,11 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
+    public Doctor findByName(String name) {
+        return doctorRepository.findByPersonalDataName(name);
+    }
+
+    @Override
     public void addPatient(DoctorId doctorId, IsDoctorRelationForm isDoctorRelationForm) {
 
       Doctor doctor = doctorRepository.findById(doctorId)

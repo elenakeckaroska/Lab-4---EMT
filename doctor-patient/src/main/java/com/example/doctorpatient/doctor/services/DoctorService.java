@@ -17,6 +17,8 @@ public interface DoctorService {
     DoctorId insertDoctor(DoctorForm doctorForm);
     List<Doctor> findAll();
     Optional<Doctor> findById(DoctorId id);
+    Doctor findByName(String name);
+
     void addPatient(DoctorId doctorId, IsDoctorRelationForm isDoctorRelationForm);
     void scheduleAppointment(mk.ukim.finki.emt.sharedkernel.events.appointments.Doctor doctor,
                              Patient patient, Duration duration,

@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface PatientService {
     Patient findById(PatientId id);
+    Patient findByPersonalDataEmbg(String embg);
     Patient insertPatient(PatientForm form);
     List<Patient> getAll();
 }

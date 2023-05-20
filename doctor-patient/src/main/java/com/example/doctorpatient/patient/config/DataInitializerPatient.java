@@ -17,9 +17,9 @@ public class DataInitializerPatient {
 
     @PostConstruct
     public void initData(){
-        Patient patient1 = Patient.build(PersonalData.valueOf("patient1", "patient1", LocalDate.of(2001,8,1),"0108001"));
+        Patient patient1 = Patient.build(PersonalData.valueOf("patient1", "patient1", LocalDate.of(2001,8,1),"0208001"));
 
-        Patient patient2 = Patient.build(PersonalData.valueOf("patient2", "patient2", LocalDate.of(2001,8,1),"0108001"));
+        Patient patient2 = Patient.build(PersonalData.valueOf("patient2", "patient2", LocalDate.of(2001,8,1),"0308001"));
 
 
         if(patientRepository.findAll().isEmpty()){

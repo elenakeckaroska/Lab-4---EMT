@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, PatientId> {
+    Patient findByPersonalDataEmbg(String embg);
 }

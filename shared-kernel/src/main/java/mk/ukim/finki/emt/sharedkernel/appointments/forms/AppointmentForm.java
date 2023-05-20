@@ -1,12 +1,13 @@
-package com.example.appointment.domain.forms;
+package mk.ukim.finki.emt.sharedkernel.appointments.forms;
 
-import com.example.appointment.domain.model.AppointmentCategory;
-import com.example.appointment.domain.valueObjects.Doctor;
-import com.example.appointment.domain.valueObjects.Patient;
+
 import mk.ukim.finki.emt.sharedkernel.appointments.TimePlaceOfAppointment;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import mk.ukim.finki.emt.sharedkernel.events.appointments.AppointmentCategory;
+import mk.ukim.finki.emt.sharedkernel.events.appointments.Doctor;
+import mk.ukim.finki.emt.sharedkernel.events.appointments.Patient;
 
 import java.time.Duration;
 

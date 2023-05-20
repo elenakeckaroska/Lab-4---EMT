@@ -29,6 +29,11 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
+    public Patient findByPersonalDataEmbg(String embg) {
+        return patientRepository.findByPersonalDataEmbg(embg);
+    }
+
+    @Override
     public Patient insertPatient(PatientForm form) {
         Patient p = Patient.build(form.getPersonalData());
         patientRepository.saveAndFlush(p);

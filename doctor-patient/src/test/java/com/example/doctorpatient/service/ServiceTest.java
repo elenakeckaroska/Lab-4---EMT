@@ -9,9 +9,11 @@ import mk.ukim.finki.emt.sharedkernel.events.appointments.*;
 import mk.ukim.finki.emt.sharedkernel.financial.Currency;
 import mk.ukim.finki.emt.sharedkernel.financial.Money;
 import mk.ukim.finki.emt.sharedkernel.personalInfor.PersonalData;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.Assert;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -52,18 +54,43 @@ public class ServiceTest {
         PatientForm patientForm = new PatientForm();
         patientForm.setPersonalData(PersonalData.valueOf("p1","p1", LocalDate.of(2001,8,1),"0108001"));
         patientService.insertPatient(patientForm);
+        Assertions.assertEquals("patient2",patientService.findByPersonalDataEmbg("0308001").getPersonalData().getName());
     }
 
     @Test
     public void scheduleAppointment(){
-        com.example.doctorpatient.doctor.domain.model.Doctor doctor = doctorService.findAll().stream().findFirst().get();
+
+        com.example.doctorpatient.doctor.domain.model.Doctor doctor = doctorService.findByName("doctor1");
         Doctor doc = new Doctor(DoctorId.of(doctor.getId().getId()), doctor.getPersonalData(), doctor.getWorkExperience());
 
-        com.example.doctorpatient.patient.domain.model.Patient patient = patientService.getAll().stream().findFirst().get();
+        com.example.doctorpatient.patient.domain.model.Patient patient = patientService
+                .findByPersonalDataEmbg("0208001");
+
         Patient p = new Patient(PatientId.of(patient.getId().getId()), patient.getPersonalData());
+
+
         doctorService.scheduleAppointment(doc, p, Duration.of(1, ChronoUnit.HOURS),
                 new TimePlaceOfAppointment(5, "5B", LocalDateTime.now()),
                 new AppointmentCategory(Money.valueOf(Currency.MKD, 1000), AppointmentType.EYE_EXAM));
+
+
+    }
+
+    @Test
+    public void scheduleSecondAppointment(){
+        com.example.doctorpatient.doctor.domain.model.Doctor doctor = doctorService.findByName("doctor1");
+        Doctor doc = new Doctor(DoctorId.of(doctor.getId().getId()), doctor.getPersonalData(), doctor.getWorkExperience());
+
+        com.example.doctorpatient.patient.domain.model.Patient patient = patientService
+                .findByPersonalDataEmbg("0208001");
+
+        Patient p = new Patient(PatientId.of(patient.getId().getId()), patient.getPersonalData());
+
+
+        doctorService.scheduleAppointment(doc, p, Duration.of(1, ChronoUnit.HOURS),
+                new TimePlaceOfAppointment(5, "13A", LocalDateTime.now()),
+                new AppointmentCategory(Money.valueOf(Currency.MKD, 2000), AppointmentType.RADIOLOGICAL));
+
     }
 }
 

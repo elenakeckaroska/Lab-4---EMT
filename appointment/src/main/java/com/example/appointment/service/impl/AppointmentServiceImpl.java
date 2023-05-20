@@ -1,6 +1,5 @@
 package com.example.appointment.service.impl;
 
-import com.example.appointment.domain.forms.AppointmentForm;
 import com.example.appointment.domain.model.Appointment;
 import com.example.appointment.domain.model.AppointmentId;
 import com.example.appointment.domain.repository.AppointmentRepository;
@@ -10,7 +9,6 @@ import com.example.appointment.service.AppointmentService;
 import lombok.AllArgsConstructor;
 import mk.ukim.finki.emt.sharedkernel.appointments.TimePlaceOfAppointment;
 import mk.ukim.finki.emt.sharedkernel.events.appointments.AppointmentCategory;
-import mk.ukim.finki.emt.sharedkernel.events.appointments.Doctor;
 import mk.ukim.finki.emt.sharedkernel.events.appointments.Patient;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +41,6 @@ public class AppointmentServiceImpl implements AppointmentService {
         com.example.appointment.domain.model.AppointmentCategory appointmentCategory1 = new com.example.appointment.domain.model.AppointmentCategory(
                 appointmentCategory.getPrice(),  appointmentCategory.getAppointmentType());
 
-//        com.example.appointment.domain.model.AppointmentCategory appointmentCategory1 = null;
         com.example.appointment.domain.valueObjects.Doctor doctor1 = new com.example.appointment.domain.valueObjects.Doctor(new DoctorId(doctor.getId().getId()),
                 doctor.getPersonalData(), doctor.getWorkExperience());
         com.example.appointment.domain.valueObjects.Patient patient1 = new com.example.appointment.domain.valueObjects.Patient(new PatientId(patient.getId().getId()), patient.getPersonalData());
